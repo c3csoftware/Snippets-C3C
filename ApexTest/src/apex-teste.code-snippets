@@ -1,0 +1,59 @@
+{
+	"C3C_testeStub": {
+		"scope": "apex",
+		"prefix": "C3C_testeStub",
+		"body": [
+			"public class $1Stub extends C3C_AbstractStub implements System.StubProvider",
+			"{",
+			"    public override Map<String, ClassTested> getMapClassTested()",
+			"    {",
+			"       return mapClassTested;",
+			"    }",
+			"    public override String getClassName()",
+			"    {",
+			"       return '$1';",
+			"    }",
+			"",  
+			"    public override Object methodCall(",
+			"        Object stubbedObject,",
+			"        String stubbedMethodName,",
+			"        Type returnType,",
+			"        List<System.Type> listOfParamTypes,",
+			"        List<String> listOfParamNames,",
+			"        List<Object> listOfArgs",
+			"    )",
+			"    {",
+			"       Object returnValue;",
+			"",  
+			"       switch on stubbedMethodName",
+			"       {",
+			"            when '$2'",
+			"            {",
+			"                 returnValue = null;",
+			"            }",
+			"       }",
+			"",  
+			"       return returnValue;",
+			"    }",
+			"}"
+		],
+		"description": "Criação de stubs rápidas"
+	},
+	"C3C_testeSetup": {
+		"scope": "apex",
+		"prefix": "C3C_testeSetup",
+		"body": [
+			"public static Map<String, ClassTested> mapClassTested = new Map<String, ClassTested>();",
+			"",
+			"public static void setupInjector()",
+			"{",
+			"    // Para getInstance",
+			"    C3C_DIContainer_Injector.createInstance('NomeBinding', Test.createStub(INomeBinding.class, new NomeBindingStub()));",
+			"",
+			"    // Para newInstance",
+			"    C3C_DIContainer_Injector.createInstance('NomeBinding', INomeBinding.class, 'NomeDaClasseDeTeste.NomeBindingStub');",
+			"}"
+		],
+		"description": "Criação do setupinjector rápido"
+	}
+}
